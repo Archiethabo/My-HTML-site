@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StudyGenius - Smart Student Support</title>
+  <title>TravelGenius - Personalized Travel</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f3f4f6;
+      background: #f9fafb;
       color: #333;
       line-height: 1.6;
       display: flex;
@@ -98,8 +98,7 @@
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
     }
 
     header.hero button {
@@ -134,79 +133,105 @@
       font-size: 1.1rem;
     }
 
-    ul {
-      margin-left: 1.5rem;
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
     }
 
-    .card {
+    .step {
       background: white;
-      border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    /* AI Box */
-    .ai-box {
-      margin-top: 1rem;
-    }
-
-    .ai-box input {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
       border-radius: 8px;
-      margin-bottom: 0.5rem;
+      flex: 1 1 280px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .ai-box button {
-      background-color: #0077cc;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border: none;
+    .step h3 {
+      color: #0077cc;
+      margin-bottom: 0.8rem;
+    }
+
+    blockquote {
+      background: #e6f0ff;
+      border-left: 6px solid #0077cc;
+      margin: 1rem 0 2rem;
+      padding: 1rem 1.5rem;
+      font-style: italic;
+      color: #444;
       border-radius: 6px;
-      font-size: 1rem;
+    }
+
+    blockquote footer {
+      text-align: right;
+      font-weight: bold;
+      color: #0077cc;
       margin-top: 0.5rem;
     }
 
-    .ai-box button:hover {
-      background-color: #005fa3;
-    }
-
-    .ai-response {
+    table {
+      width: 100%;
+      border-collapse: collapse;
       margin-top: 1rem;
-      background: #e6f4ff;
-      padding: 1rem;
-      border-radius: 8px;
-      display: none;
+      margin-bottom: 2rem;
     }
 
-    /* Contact Form */
-    .contact-form {
+    th, td {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .destinations {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 1rem;
+      justify-content: center;
+    }
+
+    .destinations div {
+      background: #0077cc;
+      color: white;
+      padding: 0.7rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .ai-box, .contact-form {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
       margin-top: 1rem;
     }
 
-    .contact-form input, .contact-form textarea {
+    .ai-box input, .contact-form input, .contact-form textarea {
+      width: 100%;
       padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .ai-box button, .contact-form button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
       font-size: 1rem;
     }
 
     .contact-form button {
       background-color: #28a745;
-      color: white;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    .contact-form button:hover {
-      background-color: #218838;
     }
 
     footer {
@@ -223,18 +248,13 @@
     }
 
     @media (max-width: 600px) {
-      .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
       header.hero h1 {
         font-size: 1.8rem;
       }
-    }
 
-    html {
-      scroll-behavior: smooth;
+      .steps {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -242,71 +262,78 @@
 
   <nav class="navbar">
     <div class="container nav-content">
-      <h2 class="logo">StudyGenius</h2>
+      <h2 class="logo">TravelGenius</h2>
       <ul class="nav-links">
-        <li><a href="#home">🧭 Home</a></li>
-        <li><a href="#about">💡 About</a></li>
-        <li><a href="#ai">🤖 AI Planner</a></li>
-        <li><a href="#contact">📨 Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#ai">AI Assistant</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero" id="home">
     <div class="container">
-      <h1>Study Smarter, Not Harder</h1>
-      <p>Welcome to StudyGenius – your AI-powered platform for smarter learning, better planning, and faster success.</p>
-      <button id="planTripBtn">🎓 Start Now</button>
+      <h1>Book, Explore, Travel Smart</h1>
+      <p>Get personalized tours, smart mapping, and expert travel bookings — all in one place!</p>
+      <button id="planTripBtn">Start Planning</button>
     </div>
   </header>
 
   <main class="container">
-
-    <section id="about" class="card">
-      <h2>💡 About</h2>
-      <p>StudyGenius is built to empower learners by combining the power of AI and simple design. Whether you're preparing for final exams or need daily revision help, we've got your back.</p>
-    </section>
-
-    <section id="ai" class="card">
-      <h2>🤖 AI Planner</h2>
-      <p>Try asking our AI anything (demo only for now):</p>
-      <div class="ai-box">
-        <input type="text" id="aiInput" placeholder="e.g., What’s the best way to revise for math exams?" />
-        <button onclick="showAIResponse()">Ask AI</button>
-        <div class="ai-response" id="aiResponse">
-          <strong>AI:</strong> That's a great question! Our AI will be able to help soon. Stay tuned. 😉
+    <section id="how">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>📍 Choose Destination</h3>
+          <p>Select where you want to go, when, and your travel style.</p>
+        </div>
+        <div class="step">
+          <h3>🧠 AI Itinerary + Booking</h3>
+          <p>AI + travel experts create your custom schedule and booking links.</p>
+        </div>
+        <div class="step">
+          <h3>🗺️ Navigate & Enjoy</h3>
+          <p>Use your plan with maps, tips, and offline support to explore smoothly.</p>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="card">
-      <h2>📨 Contact Us</h2>
-      <p>Have a question or suggestion? We'd love to hear from you.</p>
+    <section id="ai">
+      <h2>AI Travel Assistant</h2>
+      <div class="ai-box">
+        <input type="text" placeholder="e.g. Where should I go for a 3-day trip in Italy?" />
+        <button>Ask</button>
+      </div>
+    </section>
+
+    <section id="map">
+      <h2>Map Your Journey</h2>
+      <p>This section will include an interactive map showing your itinerary (Coming soon!)</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
       <form class="contact-form">
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Your Email" required />
         <textarea rows="4" placeholder="Your Message..." required></textarea>
-        <button type="submit">Send Message</button>
+        <button type="submit">Send</button>
       </form>
     </section>
-
   </main>
 
   <footer>
-    About • FAQ • Contact • Terms<br />
-    🌍 Powered by AI + Human Curation<br />
-    © 2025 StudyGenius
+    Book • Explore • Map • Contact<br />
+    🌍 Powered by AI & Curated by Travel Experts<br />
+    © 2025 TravelGenius
   </footer>
 
   <script>
-    function showAIResponse() {
-      const response = document.getElementById("aiResponse");
-      response.style.display = "block";
-    }
-
     document.querySelector('.contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      alert("Thank you for your message! We’ll get back to you shortly.");
+      alert("Thank you for reaching out! We’ll get back to you shortly.");
       this.reset();
     });
   </script>
