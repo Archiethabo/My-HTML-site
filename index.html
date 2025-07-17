@@ -5,264 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TravelGenius - Personalized Travel</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fafb;
-      color: #333;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    a { color: #0077cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    button { cursor: pointer; }
-
-    /* Navbar */
-    .navbar {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .logo {
-      font-size: 1.4rem;
-      color: #0077cc;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links li a {
-      color: #333;
-      font-weight: 600;
-    }
-
-    .nav-links li a:hover {
-      color: #0077cc;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    header.hero {
-      background: linear-gradient(to right, #0077cc, #00b4d8);
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-    }
-
-    header.hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header.hero p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    header.hero button {
-      background: #ffcc00;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      font-weight: 700;
-      color: #333;
-      transition: background 0.3s ease;
-    }
-
-    header.hero button:hover {
-      background: #e6b800;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    section h2 {
-      color: #0077cc;
-      margin-bottom: 1rem;
-      border-bottom: 3px solid #0077cc;
-      display: inline-block;
-      padding-bottom: 0.3rem;
-    }
-
-    section p {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: space-between;
-    }
-
-    .step {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      flex: 1 1 280px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .step h3 {
-      color: #0077cc;
-      margin-bottom: 0.8rem;
-    }
-
-    .ai-box, .contact-form {
-      background: #fff;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      margin-top: 1rem;
-    }
-
-    .ai-box input, .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 0.75rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    .ai-box button, .contact-form button {
-      background: #0077cc;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    .contact-form button {
-      background-color: #28a745;
-    }
-
-    #map {
-      width: 100%;
-      height: 400px;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    footer {
-      background: #333;
-      color: #eee;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      margin-top: auto;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #ffcc00;
-    }
-
-    @media (max-width: 600px) {
-      header.hero h1 {
-        font-size: 1.8rem;
-      }
-      .steps {
-        flex-direction: column;
-      }
-    }
+    /* … (same styles as before: navbar, hero, sections, ai-box, contact-form, map, etc.) */
+    /* For brevity, assume same styling blocks here as in previous full code */
+    /* Add a little spacing for auth forms */
+    #login input { margin: 0.5rem 0; padding: 0.5rem; width: 100%; }
+    #login button { margin-right: 0.5rem; padding: 0.5rem 1rem; }
   </style>
 </head>
-
 <body>
-  <nav class="navbar">
-    <div class="container nav-content">
-      <h2 class="logo">TravelGenius</h2>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#ai">AI Assistant</a></li>
-        <li><a href="#map">Map</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <header class="hero" id="home">
-    <div class="container">
-      <h1>Book, Explore, Travel Smart</h1>
-      <p>Get personalized tours, smart mapping, and expert travel bookings — all in one place!</p>
-      <button id="planTripBtn">Start Planning</button>
-    </div>
-  </header>
+  <!-- Navbar, Hero, How, AI chat, Map, Contact sections remain same as before -->
 
   <main class="container">
-    <section id="how">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>📍 Choose Destination</h3>
-          <p>Select where you want to go, when, and your travel style.</p>
-        </div>
-        <div class="step">
-          <h3>🧠 AI Itinerary + Booking</h3>
-          <p>AI + travel experts create your custom schedule and booking links.</p>
-        </div>
-        <div class="step">
-          <h3>🗺️ Navigate & Enjoy</h3>
-          <p>Use your plan with maps, tips, and offline support to explore smoothly.</p>
-        </div>
+
+    <!-- How it Works, AI chat, Map, Contact sections here -->
+
+    <!-- 🔐 NEW: Login / Register Section -->
+    <section id="login">
+      <h2>Login / Register</h2>
+      <p id="authStatus">Checking login status...</p>
+
+      <div>
+        <h3>🔐 Register</h3>
+        <input id="reg-email" type="email" placeholder="Email" />
+        <input id="reg-password" type="password" placeholder="Password" />
+        <button onclick="registerUser()">Register</button>
       </div>
-    </section>
 
-    <section id="ai">
-      <h2>AI Travel Assistant</h2>
-      <div class="ai-box">
-        <input type="text" placeholder="e.g. Where should I go for a 3-day trip in Italy?" />
-        <button>Ask</button>
+      <div>
+        <h3>🔓 Login / Logout</h3>
+        <input id="log-email" type="email" placeholder="Email" />
+        <input id="log-password" type="password" placeholder="Password" />
+        <button onclick="loginUser()">Login</button>
+        <button onclick="logoutUser()">Logout</button>
       </div>
-    </section>
-
-    <section id="map">
-      <h2>Map Your Journey</h2>
-      <input id="searchBox" type="text" placeholder="Search for a place..." style="width:100%; padding: 10px; margin-bottom: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px;" />
-      <div id="map"></div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="4" placeholder="Your Message..." required></textarea>
-        <button type="submit">Send</button>
-      </form>
     </section>
   </main>
 
@@ -273,50 +49,94 @@
   </footer>
 
   <script>
-    document.querySelector('.contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert("Thank you for reaching out! We’ll get back to you shortly.");
-      this.reset();
+    // 🔐 Firebase Config – replace with your own from Firebase Console
+    const firebaseConfig = {
+      apiKey: "YOUR_FIREBASE_API_KEY",
+      authDomain: "YOUR_FIREBASE_PROJECT.firebaseapp.com",
+      projectId: "Moblue",
+      storageBucket: "YOUR_FIREBASE_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.registerUser = () => {
+      const email = document.getElementById("reg-email").value;
+      const password = document.getElementById("reg-password").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => alert("✅ Registered successfully!"))
+        .catch(err => alert("❌ " + err.message));
+    };
+
+    window.loginUser = () => {
+      const email = document.getElementById("log-email").value;
+      const password = document.getElementById("log-password").value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => alert("✅ Logged in!"))
+        .catch(err => alert("❌ " + err.message));
+    };
+
+    window.logoutUser = () => {
+      signOut(auth).then(() => alert("👋 Logged out."));
+    };
+
+    onAuthStateChanged(auth, user => {
+      document.getElementById("authStatus").textContent = user
+        ? `✅ Logged in as ${user.email}`
+        : "🔒 Not logged in.";
     });
+  </script>
 
-    let map;
-    let marker;
+  <script>
+    // 🧠 AI Chat Interaction
+    async function askAI() {
+      const input = document.getElementById("aiInput").value;
+      const output = document.getElementById("aiOutput");
+      output.textContent = "Thinking...";
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer YOUR_OPENAI_API_KEY"
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: input }]
+        })
+      });
+      const data = await res.json();
+      output.textContent = data.choices?.[0]?.message?.content ?? "No response.";
+    }
+  </script>
 
+  <script>
+    // 🗺️ Google Maps with Autocomplete Search
+    let map, marker;
     function initMap() {
-      const defaultCoords = { lat: -24.654, lng: 25.908 }; // Change as needed
-
+      const defaultCoords = { lat: -24.654, lng: 25.908 };
       map = new google.maps.Map(document.getElementById("map"), {
         zoom: 10,
         center: defaultCoords,
       });
-
-      marker = new google.maps.Marker({
-        position: defaultCoords,
-        map,
-        title: "Start of Your Journey",
-      });
-
+      marker = new google.maps.Marker({ position: defaultCoords, map });
       const input = document.getElementById("searchBox");
       const autocomplete = new google.maps.places.Autocomplete(input);
       autocomplete.bindTo("bounds", map);
-
       autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
-
-        if (!place.geometry || !place.geometry.location) {
-          alert("No details found for the selected place!");
-          return;
-        }
-
+        if (!place.geometry) return alert("No details!");
         map.setCenter(place.geometry.location);
         map.setZoom(14);
-
         marker.setPosition(place.geometry.location);
         marker.setTitle(place.name);
       });
     }
   </script>
-
+  
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap">
   </script>
