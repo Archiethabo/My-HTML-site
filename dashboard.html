@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TravelGenius - Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-content">
+      <h2 class="logo">TravelGenius</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="login.html" id="logoutBtn">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container" style="margin-top: 3rem;">
+    <section>
+      <h2>Welcome to Your Dashboard</h2>
+      <p>Hello, <span id="userEmail">User</span>! Here’s a quick overview of your trips and settings.</p>
+
+      <div id="tripsSection">
+        <h3>Your Upcoming Trips</h3>
+        <ul id="tripList">
+          <!-- Dynamic trip items will go here -->
+        </ul>
+      </div>
+
+      <div id="settingsSection" style="margin-top: 2rem;">
+        <h3>Account Settings</h3>
+        <button id="deleteAccountBtn" style="background:#e63946; color:#fff; border:none; padding:0.5rem 1rem; border-radius:6px; cursor:pointer;">
+          Delete Account
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Book • Explore • Map • Contact<br />
+    🌍 Powered by AI & Curated by Travel Experts<br />
+    © 2025 TravelGenius
+  </footer>
+
+  <script>
+    // Placeholder Firebase integration here
+    // Show logged-in user email
+    const userEmailSpan = document.getElementById('userEmail');
+    const tripList = document.getElementById('tripList');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+
+    // Example dummy data for trips
+    const trips = [
+      { id: 1, destination: 'Paris', date: '2025-09-10' },
+      { id: 2, destination: 'Tokyo', date: '2026-01-15' },
+    ];
+
+    // Simulate fetching user info from Firebase Auth
+    function loadUserData() {
+      // TODO: Replace with Firebase user data
+      const userEmail = 'traveler@example.com'; 
+      userEmailSpan.textContent = userEmail;
+
+      // Load trips dynamically
+      tripList.innerHTML = '';
+      trips.forEach(trip => {
+        const li = document.createElement('li');
+        li.textContent = `${trip.destination} — ${trip.date}`;
+        tripList.appendChild(li);
+      });
+    }
+
+    loadUserData();
+
+    logoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // TODO: Firebase logout
+      alert('Logged out! Redirecting to login page...');
+      window.location.href = 'login.html';
+    });
+
+    deleteAccountBtn.addEventListener('click', () => {
+      if(confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+        // TODO: Firebase delete user
+        alert('Account deletion feature coming soon!');
+      }
+    });
+  </script>
+</body>
+</html>
