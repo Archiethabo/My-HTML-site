@@ -1,186 +1,35 @@
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* Global Styles */
 body {
+  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
+  background: #f4f4f4;
   color: #333;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
-
-/* Navbar */
 .navbar {
-  background: #ffffff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  background: #009688;
+  padding: 1rem;
+  color: #fff;
 }
-.nav-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #0077cc;
+.navbar .logo {
+  font-size: 1.5rem;
 }
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
-.nav-links li a {
-  color: #333;
-  font-weight: 600;
+.nav-links a {
+  color: white;
   text-decoration: none;
 }
-.nav-links li a:hover {
-  color: #0077cc;
+.nav-links a.active {
+  text-decoration: underline;
 }
-
-/* Container Layout */
 .container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 2rem;
 }
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(90deg, #0077cc, #00b4d8);
-  color: #fff;
-  padding: 4rem 1rem;
-  text-align: center;
-  border-radius: 10px;
-}
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
-}
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-.hero button {
-  background-color: #ffcc00;
-  color: #333;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.hero button:hover {
-  background-color: #e6b800;
-}
-
-/* Sections */
-section {
-  margin: 3rem 0;
-}
-section h2 {
-  font-size: 2rem;
-  color: #0077cc;
-  margin-bottom: 1rem;
-  border-bottom: 3px solid #0077cc;
-  display: inline-block;
-  padding-bottom: 0.2rem;
-}
-section p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-/* Step-by-step Features */
-.steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-}
-.step {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.07);
-  padding: 1.5rem;
-  flex: 1 1 300px;
-}
-.step h3 {
-  color: #0077cc;
-  margin-bottom: 1rem;
-}
-.step p {
-  line-height: 1.5;
-}
-
-/* AI Chat Section */
-.ai-box {
-  background: #ffffff;
+footer {
+  background: #eee;
   padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  margin-top: 1rem;
+  text-align: center;
 }
-.ai-box input {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-.ai-box button {
-  background: #0077cc;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 6px;
-}
-
-/* Contact Form */
-.contact-form {
-  background: #fff;
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-.contact-form button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-/* Google Map Preview Box */
-.map-box {
-  margin-top: 2rem;
-  height: 400px;
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shad
