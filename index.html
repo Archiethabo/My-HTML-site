@@ -1,76 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TravelGenius - Personalized Travel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelGenius</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <nav class="navbar">
     <div class="container nav-content">
       <h2 class="logo">TravelGenius</h2>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#ai">AI Assistant</a></li>
-        <li><a href="#map">Map</a></li>
-        <li><a href="planner.html">Trip Planner</a></li> <!-- NEW LINK -->
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </div>
   </nav>
 
-  <header class="hero" id="home">
-    <div class="container">
-      <h1>Book, Explore, Travel Smart</h1>
-      <p>Get personalized tours, smart mapping, and expert travel bookings — all in one place!</p>
-      <a href="planner.html"><button id="planTripBtn">Start Planning</button></a>
-    </div>
-  </header>
-
   <main class="container">
-    <section id="how">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>📍 Choose Destination</h3>
-          <p>Select where you want to go, when, and your travel style.</p>
-        </div>
-        <div class="step">
-          <h3>🧠 AI Itinerary + Booking</h3>
-          <p>AI + travel experts create your custom schedule and booking links.</p>
-        </div>
-        <div class="step">
-          <h3>🗺️ Navigate & Enjoy</h3>
-          <p>Use your plan with maps, tips, and offline support to explore smoothly.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="ai">
-      <h2>AI Travel Assistant</h2>
-      <div class="ai-box">
-        <input type="text" placeholder="e.g. Where should I go for a 3-day trip in Italy?" />
-        <button>Ask</button>
-      </div>
-    </section>
-
-    <section id="map">
-      <h2>Map Your Journey</h2>
-      <p>This section will include an interactive map showing your itinerary (Coming soon!)</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="4" placeholder="Your Message..." required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </section>
+    <h1>Welcome to TravelGenius</h1>
+    <p>Plan. Explore. Travel smart with AI.</p>
   </main>
 
   <footer>
@@ -78,14 +29,5 @@
     🌍 Powered by AI & Curated by Travel Experts<br />
     © 2025 TravelGenius
   </footer>
-
-  <script>
-    document.querySelector('.contact-form')?.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert("Thank you for reaching out! We’ll get back to you shortly.");
-      this.reset();
-    });
-  </script>
-
 </body>
 </html>
