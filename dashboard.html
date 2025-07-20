@@ -1,33 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dashboard - TravelGenius</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+
   <nav class="navbar">
     <div class="container nav-content">
       <h2 class="logo">TravelGenius</h2>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="planner.html">Planner</a></li>
-        <li><a href="login.html">Logout</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container">
-    <h2>Welcome to your dashboard!</h2>
-    <p>Access your trips, saved plans, and upcoming events.</p>
+  <main class="container" style="margin-top: 3rem;">
+    <h2>Welcome to Your Dashboard</h2>
+    <p>Here you can view your saved trips and planned itineraries.</p>
+
+    <section id="userTrips" class="dashboard-section">
+      <p>Loading your trips...</p>
+      <!-- User trips will appear here -->
+    </section>
   </main>
 
   <footer>
-    Book • Explore • Map • Contact<br />
-    🌍 Powered by AI & Curated by Travel Experts<br />
+    Your Travel Plans, Smarter 🌎<br />
     © 2025 TravelGenius
   </footer>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+  <script src="assets/js/firebaseConfig.js"></script>
+  <script src="assets/js/script.js"></script>
+
 </body>
 </html>
