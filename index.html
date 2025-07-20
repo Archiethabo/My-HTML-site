@@ -1,33 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TravelGenius</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TravelGenius - Explore Smarter</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+
   <nav class="navbar">
     <div class="container nav-content">
       <h2 class="logo">TravelGenius</h2>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="planner.html">Planner</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="login.html">Login</a></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container">
-    <h1>Welcome to TravelGenius</h1>
-    <p>Plan. Explore. Travel smart with AI.</p>
-  </main>
+  <header class="hero-section">
+    <div class="container">
+      <h1>Plan Smarter. Travel Further.</h1>
+      <p>Your AI-powered trip companion – book, chat, map, and go!</p>
+      <a href="planner.html" class="btn">Start Planning</a>
+    </div>
+  </header>
+
+  <section id="features" class="container section">
+    <h2>What You Can Do</h2>
+    <div class="features-grid">
+      <div class="feature-box">
+        <h3>🤖 AI Chat</h3>
+        <p>Ask travel questions and build your itinerary with AI help.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🗺️ Live Maps</h3>
+        <p>Preview your trip route day by day using Google Maps.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🔐 Account Login</h3>
+        <p>Save your trips, track past plans, and manage your profile.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container section">
+    <h2>About TravelGenius</h2>
+    <p>We help travelers like you plan smarter, book better, and explore deeper using smart AI and real-time tools.</p>
+  </section>
+
+  <section id="contact" class="container section">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
   <footer>
     Book • Explore • Map • Contact<br />
     🌍 Powered by AI & Curated by Travel Experts<br />
     © 2025 TravelGenius
   </footer>
+
 </body>
 </html>
