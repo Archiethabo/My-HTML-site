@@ -1,41 +1,59 @@
-/* === GLOBAL STYLES === */
-body {
+/* === BASE RESET & GLOBAL STYLES === */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
   color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 1rem;
 }
 
+/* === NAVBAR === */
 .navbar {
-  background-color: #fff;
+  background-color: #009688;
+  color: #fff;
   padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #00796B;
 }
 
-.navbar .logo {
-  font-size: 1.5rem;
-  color: #009688;
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
-  padding-left: 0;
 }
 
-.nav-links a {
-  color: #333;
-  text-decoration: none;
+.nav-links li a {
+  color: white;
+  font-weight: 500;
 }
 
-.nav-links a.active {
+.nav-links li a.active {
   text-decoration: underline;
 }
 
@@ -46,7 +64,7 @@ body {
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
-  text-decoration: none;
+  text-align: center;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
