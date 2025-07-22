@@ -1,3 +1,7 @@
+// ---------- Firebase Auth Setup ----------
+const auth = firebase.auth();
+const db = firebase.firestore();
+
 // ---------- REGISTER USER ----------
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
@@ -7,7 +11,15 @@ if (registerForm) {
     const password = registerForm.password.value;
 
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const userId = userCredential.user.uid;
+
+      // Save default plan to Firestore (free by default)
+      await db.collection('users').doc(userId).set({
+        email: email,
+        plan: 'free'
+      });
+
       alert('Registration successful!');
       window.location.href = 'dashboard.html';
     } catch (error) {
@@ -47,12 +59,42 @@ if (logoutBtn) {
   });
 }
 
-// ---------- LOAD TRIPS ON DASHBOARD ----------
-const userTrips = document.getElementById('userTrips');
-if (userTrips) {
-  auth.onAuthStateChanged(async (user) => {
-    if (user) {
-      const snapshot = await db.collection('trips').where('userId', '==', user.uid).get();
+// ---------- DASHBOARD PLAN CHECK + FEATURE ACCESS ----------
+auth.onAuthStateChanged(async (user) => {
+  if (!user) {
+    if (window.location.pathname.includes('dashboard.html')) {
+      window.location.href = 'login.html';
+    }
+    return;
+  }
+
+  try {
+    const userDoc = await db.collection('users').doc(user.uid).get();
+    const userData = userDoc.data();
+    const plan = userData.plan || 'free';
+
+    // Show/hide content based on data-plan
+    document.querySelectorAll('[data-plan]').forEach((el) => {
+      const allowedPlan = el.getAttribute('data-plan');
+      const plansAllowed = {
+        free: ['free'],
+        pro: ['free', 'pro'],
+        premium: ['free', 'pro', 'premium']
+      };
+      if (!plansAllowed[plan].includes(allowedPlan)) {
+        el.style.display = 'none';
+      } else {
+        el.style.display = 'block';
+      }
+    });
+
+    // ---------- LOAD TRIPS ON DASHBOARD ----------
+    const userTrips = document.getElementById('userTrips');
+    if (userTrips) {
+      const snapshot = await db.collection('trips')
+        .where('userId', '==', user.uid)
+        .get();
+
       if (snapshot.empty) {
         userTrips.innerHTML = '<p>No trips saved yet.</p>';
       } else {
@@ -68,11 +110,11 @@ if (userTrips) {
           `;
         });
       }
-    } else {
-      window.location.href = 'login.html';
     }
-  });
-}
+  } catch (err) {
+    console.error('Failed to load user plan or trips:', err);
+  }
+});
 
 // ---------- AI CHAT PLANNER ----------
 const aiForm = document.getElementById('aiForm');
@@ -81,14 +123,13 @@ if (aiForm && aiResult) {
   aiForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const prompt = document.getElementById('aiPrompt').value;
-
     aiResult.textContent = 'Thinking...';
 
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer sk-your-key-here',
+          'Authorization': 'Bearer sk-your-key-here', // Replace with your actual key
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
