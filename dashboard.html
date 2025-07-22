@@ -14,33 +14,52 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="planner.html">Planner</a></li>
-        <li><a href="#" id="logoutBtn">Logout</a></li>
         <li><a href="pricing.html">Pricing</a></li>
+        <li><button id="logoutBtn" class="btn-small">Logout</button></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container" style="margin-top: 3rem;">
-    <h2>Welcome to Your Dashboard</h2>
-    <p>Here you can view your saved trips and planned itineraries.</p>
+  <header class="hero-section">
+    <div class="container">
+      <h1>Your Travel Dashboard</h1>
+      <p>Manage your trips, access AI tools, and plan like a pro.</p>
+    </div>
+  </header>
 
-    <section id="userTrips" class="dashboard-section">
-      <p>Loading your trips...</p>
-      <!-- User trips will appear here -->
+  <main class="container section">
+    
+    <section id="userTrips" data-plan="free">
+      <h2>📋 Saved Trips (Free Plan)</h2>
+      <div id="tripsList">Loading your trips...</div>
     </section>
+
+    <section id="aiPlanner" data-plan="pro">
+      <h2>🤖 AI Itinerary Builder (Pro Plan)</h2>
+      <form id="aiForm">
+        <input type="text" id="aiPrompt" placeholder="Where do you want to go?" required />
+        <button type="submit">Generate Plan</button>
+      </form>
+      <div id="aiResult" class="ai-output"></div>
+    </section>
+
+    <section id="calendarTool" data-plan="premium">
+      <h2>📅 Premium Calendar Preview</h2>
+      <p>This feature is available to Premium users only.</p>
+      <div class="calendar-placeholder">[Calendar UI here]</div>
+    </section>
+
   </main>
 
   <footer>
-    Your Travel Plans, Smarter 🌎<br />
-    © 2025 TravelGenius
+    TravelGenius SaaS Platform — Smarter Travel, Smarter Plans<br />
+    © 2025 TravelGenius. All rights reserved.
   </footer>
 
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
-  <script src="assets/js/firebaseConfig.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/script.js"></script>
-
 </body>
 </html>
