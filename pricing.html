@@ -66,6 +66,53 @@
     🌍 Powered by AI & Curated by Travel Experts<br />
     © 2025 TravelGenius
   </footer>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import {
+    getAuth,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import {
+    getFirestore,
+    doc,
+    getDoc
+  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    // ...other config
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if (userSnap.exists()) {
+      const userPlan = userSnap.data().plan || "free";
+
+      document.querySelectorAll("[data-plan]").forEach(el => {
+        const allowed = el.getAttribute("data-plan").split(",");
+        if (!allowed.includes(userPlan)) {
+          el.style.display = "none";
+        }
+      });
+
+    } else {
+      console.log("No plan set — defaulting to free.");
+    }
+  });
+</script>
 
 </body>
 </html>
