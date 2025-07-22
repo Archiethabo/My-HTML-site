@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trip Planner - TravelGenius</title>
+  <title>Plan Your Trip - TravelGenius</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Hide body until auth check passes -->
+  <style>
+    body { display: none; }
+  </style>
 </head>
 <body>
 
@@ -15,47 +20,22 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="planner.html" class="active">Planner</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container section">
-    <h2>🧠 Build Your Trip</h2>
-
-    <div class="planner-sections">
-
-      <!-- AI Chat Section -->
-      <div class="ai-chat-box">
-        <h3>Ask TravelGenius AI</h3>
-        <form id="aiForm">
-          <input type="text" id="aiInput" placeholder="e.g. Plan 3 days in Cape Town..." required />
-          <button type="submit">Ask</button>
-        </form>
-        <div id="aiResponse" class="chat-response"></div>
-      </div>
-
-      <!-- Calendar UI Section -->
-      <div class="calendar-box">
-        <h3>📅 Trip Schedule</h3>
-        <div id="calendar">
-          <p>Day 1: <input type="text" placeholder="e.g. City Tour" /></p>
-          <p>Day 2: <input type="text" placeholder="e.g. Safari" /></p>
-          <p>Day 3: <input type="text" placeholder="e.g. Beach Relaxation" /></p>
-        </div>
-      </div>
-
-      <!-- Google Maps Preview -->
-      <div class="map-box">
-        <h3>🗺️ Map Preview</h3>
-        <div id="map" style="height: 300px;"></div>
-      </div>
-
+  <header class="hero-section">
+    <div class="container">
+      <h1>AI Trip Planner</h1>
+      <p>Describe your dream trip and let AI build your itinerary!</p>
+      <form id="aiForm">
+        <input type="text" id="aiPrompt" placeholder="e.g. 5-day trip to Paris for food and art" required />
+        <button type="submit">Generate Plan</button>
+      </form>
+      <div id="aiResult" class="result-box"></div>
     </div>
-
-    <button id="saveTripBtn" class="btn" style="margin-top: 2rem;">Save Trip</button>
-
-  </main>
+  </header>
 
   <footer>
     Book • Explore • Map • Contact<br />
@@ -63,22 +43,24 @@
     © 2025 TravelGenius
   </footer>
 
-  <!-- Firebase, AI, and Maps -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
-  <script src="assets/js/firebaseConfig.js"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- Firebase Config & Logic -->
   <script src="assets/js/script.js"></script>
+
+  <!-- Auth Redirect Logic -->
   <script>
-  firebase.auth().onAuthStateChanged(user => {
-    if (!user) {
-      window.location.href = 'login.html';
-    }
-  });
-</script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"
-    async defer></script>
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = 'login.html';
+      } else {
+        document.body.style.display = 'block';
+      }
+    });
+  </script>
 
 </body>
 </html>
