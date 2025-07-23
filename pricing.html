@@ -26,7 +26,7 @@
     <p>Enjoy AI-powered trip planning. Plans for every traveler.</p>
 
     <div class="pricing-grid">
-      <div class="pricing-card">
+      <div class="pricing-card" data-plan="free,pro,premium">
         <h2>Starter</h2>
         <p class="price">$10 / month</p>
         <ul>
@@ -37,7 +37,7 @@
         <a href="https://forms.gle/YOUR-FORM-LINK-HERE" class="btn">Get Access</a>
       </div>
 
-      <div class="pricing-card featured">
+      <div class="pricing-card featured" data-plan="pro,premium">
         <h2>Pro</h2>
         <p class="price">$25 / month</p>
         <ul>
@@ -45,10 +45,10 @@
           <li>✓ AI itinerary generator</li>
           <li>✓ Google Maps previews</li>
         </ul>
-        <a href="https://forms.gle/YOUR-FORM-LINK-HERE" class="btn">Get Pro</a>
+        <a href="https://forms.gle/YOUR-FORM-LINK-HERE" class="btn">Upgrade to Pro</a>
       </div>
 
-      <div class="pricing-card">
+      <div class="pricing-card" data-plan="premium">
         <h2>Enterprise</h2>
         <p class="price">Custom ($100–$300)</p>
         <ul>
@@ -66,53 +66,42 @@
     🌍 Powered by AI & Curated by Travel Experts<br />
     © 2025 TravelGenius
   </footer>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-  import {
-    getAuth,
-    onAuthStateChanged
-  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-  import {
-    getFirestore,
-    doc,
-    getDoc
-  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    // ...other config
-  };
+  <!-- Firebase access control -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+    };
 
-  onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      window.location.href = "login.html";
-      return;
-    }
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    const userRef = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userRef);
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) return;
 
-    if (userSnap.exists()) {
-      const userPlan = userSnap.data().plan || "free";
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
 
-      document.querySelectorAll("[data-plan]").forEach(el => {
-        const allowed = el.getAttribute("data-plan").split(",");
-        if (!allowed.includes(userPlan)) {
-          el.style.display = "none";
-        }
-      });
+      if (userSnap.exists()) {
+        const userPlan = userSnap.data().plan || "free";
 
-    } else {
-      console.log("No plan set — defaulting to free.");
-    }
-  });
-</script>
-
+        document.querySelectorAll("[data-plan]").forEach((el) => {
+          const allowed = el.getAttribute("data-plan").split(",");
+          if (!allowed.includes(userPlan)) {
+            el.classList.add("locked");
+            el.querySelector(".btn").textContent = "Upgrade Required";
+            el.querySelector(".btn").href = "pricing.html";
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
