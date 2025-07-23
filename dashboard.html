@@ -28,21 +28,24 @@
   </header>
 
   <main class="container section">
-    
+
+    <!-- Free Plan Feature -->
     <section id="userTrips" data-plan="free">
       <h2>📋 Saved Trips (Free Plan)</h2>
       <div id="tripsList">Loading your trips...</div>
     </section>
 
+    <!-- Pro Plan Feature -->
     <section id="aiPlanner" data-plan="pro">
       <h2>🤖 AI Itinerary Builder (Pro Plan)</h2>
       <form id="aiForm">
         <input type="text" id="aiPrompt" placeholder="Where do you want to go?" required />
-        <button type="submit">Generate Plan</button>
+        <button type="submit" class="btn">Generate Plan</button>
       </form>
       <div id="aiResult" class="ai-output"></div>
     </section>
 
+    <!-- Premium Plan Feature -->
     <section id="calendarTool" data-plan="premium">
       <h2>📅 Premium Calendar Preview</h2>
       <p>This feature is available to Premium users only.</p>
@@ -56,10 +59,14 @@
     © 2025 TravelGenius. All rights reserved.
   </footer>
 
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- Your Scripts -->
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/script.js"></script>
+
 </body>
 </html>
