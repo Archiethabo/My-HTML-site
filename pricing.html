@@ -16,92 +16,58 @@
         <li><a href="planner.html">Planner</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="login.html">Login</a></li>
-        <li><a href="pricing.html" class="active">Pricing</a></li>
       </ul>
     </div>
   </nav>
 
-  <main class="container section" style="text-align: center; padding-top: 3rem;">
-    <h1>Choose Your TravelGenius Plan</h1>
-    <p>Enjoy AI-powered trip planning. Plans for every traveler.</p>
-
-    <div class="pricing-grid">
-      <div class="pricing-card" data-plan="free,pro,premium">
-        <h2>Starter</h2>
-        <p class="price">$10 / month</p>
-        <ul>
-          <li>✓ 1 user account</li>
-          <li>✓ Save up to 5 trips</li>
-          <li>✓ Email support</li>
-        </ul>
-        <a href="https://forms.gle/YOUR-FORM-LINK-HERE" class="btn">Get Access</a>
-      </div>
-
-      <div class="pricing-card featured" data-plan="pro,premium">
-        <h2>Pro</h2>
-        <p class="price">$25 / month</p>
-        <ul>
-          <li>✓ Unlimited trips</li>
-          <li>✓ AI itinerary generator</li>
-          <li>✓ Google Maps previews</li>
-        </ul>
-        <a href="https://forms.gle/YOUR-FORM-LINK-HERE" class="btn">Upgrade to Pro</a>
-      </div>
-
-      <div class="pricing-card" data-plan="premium">
-        <h2>Enterprise</h2>
-        <p class="price">Custom ($100–$300)</p>
-        <ul>
-          <li>✓ Company branding</li>
-          <li>✓ Multi-user dashboard</li>
-          <li>✓ Priority support</li>
-        </ul>
-        <a href="mailto:travelgenius@gmail.com" class="btn">Contact Sales</a>
-      </div>
+  <header class="hero-section">
+    <div class="container">
+      <h1>Pricing Plans</h1>
+      <p>Choose the right plan to match your travel style and planning needs.</p>
     </div>
+  </header>
+
+  <main class="container section pricing-table">
+
+    <div class="pricing-card" data-plan="free">
+      <h2>🎒 Free</h2>
+      <p>Perfect for occasional travelers.</p>
+      <ul>
+        <li>✅ Save trips</li>
+        <li>❌ AI Itinerary Generator</li>
+        <li>❌ Calendar Preview</li>
+      </ul>
+      <button disabled class="btn-secondary">Current Plan</button>
+    </div>
+
+    <div class="pricing-card" data-plan="pro">
+      <h2>✈️ Pro</h2>
+      <p>Great for frequent planners.</p>
+      <ul>
+        <li>✅ Save trips</li>
+        <li>✅ AI Itinerary Generator</li>
+        <li>❌ Calendar Preview</li>
+      </ul>
+      <a href="https://forms.gle/your-upgrade-form-link" class="btn">Upgrade to Pro</a>
+    </div>
+
+    <div class="pricing-card" data-plan="premium">
+      <h2>🌍 Premium</h2>
+      <p>Ultimate experience for travel lovers.</p>
+      <ul>
+        <li>✅ Save trips</li>
+        <li>✅ AI Itinerary Generator</li>
+        <li>✅ Calendar Preview</li>
+      </ul>
+      <a href="mailto:upgrade@travelgenius.com" class="btn">Contact to Upgrade</a>
+    </div>
+
   </main>
 
   <footer>
-    Book • Explore • Map • Contact<br />
-    🌍 Powered by AI & Curated by Travel Experts<br />
-    © 2025 TravelGenius
+    TravelGenius SaaS Platform — Smarter Travel, Smarter Plans<br />
+    © 2025 TravelGenius. All rights reserved.
   </footer>
 
-  <!-- Firebase access control -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) return;
-
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-
-      if (userSnap.exists()) {
-        const userPlan = userSnap.data().plan || "free";
-
-        document.querySelectorAll("[data-plan]").forEach((el) => {
-          const allowed = el.getAttribute("data-plan").split(",");
-          if (!allowed.includes(userPlan)) {
-            el.classList.add("locked");
-            el.querySelector(".btn").textContent = "Upgrade Required";
-            el.querySelector(".btn").href = "pricing.html";
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>
