@@ -142,3 +142,17 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
+.upgrade-banner {
+  background-color: #ffe4e1;
+  color: #900;
+  padding: 15px;
+  border-left: 5px solid #d00;
+  font-size: 16px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+.upgrade-banner a {
+  color: #d00;
+  text-decoration: underline;
+}
