@@ -156,3 +156,39 @@ footer {
   color: #d00;
   text-decoration: underline;
 }
+
+.pricing-table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.pricing-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 25px;
+  width: 300px;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.pricing-card h2 {
+  margin-top: 0;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pricing-card ul li {
+  padding: 5px 0;
+}
+
+.btn-secondary {
+  background: #ddd;
+  color: #666;
+  cursor: not-allowed;
+}
