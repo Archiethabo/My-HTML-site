@@ -61,7 +61,10 @@ auth.onAuthStateChanged(async (user) => {
   try {
     const userDoc = await db.collection('users').doc(user.uid).get();
     const userData = userDoc.data();
-    const plan = userData.plan || 'free';
+    const planBanner = document.getElementById('userPlanBanner');
+    if (planBanner) {
+       planBanner.textContent = `👤 Your Current Plan: ${plan.toUpperCase()}`;
+}
 
     // Plan-based display with upgrade banners
 document.querySelectorAll('[data-plan]').forEach((el) => {
@@ -74,6 +77,14 @@ document.querySelectorAll('[data-plan]').forEach((el) => {
     el.appendChild(banner);
   }
 });
+    const visibleFeatures = Array.from(document.querySelectorAll('[data-plan]'))
+  .filter(el => el.style.display !== 'none');
+
+if (visibleFeatures.length === 0) {
+  const upgradeNotice = document.getElementById('upgradeNotice');
+  if (upgradeNotice) upgradeNotice.style.display = 'block';
+}
+}
     // Load dashboard trips
     const userTrips = document.getElementById('userTrips');
     if (userTrips) {
